@@ -23,19 +23,19 @@
         </div>
       </div>
 
-      <ul *ngIf="this.loginService.loggedIn" class="navbar-nav ml-lg-auto">
+      <ul *ngIf="loggedIn" class="navbar-nav ml-lg-auto">
         <li class="nav-item dropdown">
           <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img *ngIf="this.loginService.loggedInGender=='Male'" alt="Image placeholder"
+                <img *ngIf="gender=='Male'" alt="Image placeholder"
                   src="../../assets/img/user-male.png">
-                <img *ngIf="this.loginService.loggedInGender=='Female'" alt="Image placeholder"
+                <img *ngIf="gender=='Female'" alt="Image placeholder"
                   src="../../assets/img/user-female.png">
               </span>
               <div class="media-body ml-2 d-none d-lg-block">
-                <span class="mb-0 text-sm font-weight-bold" id="userName">{{this.loginService.loggedInUserName}}</span>
+                <span class="mb-0 text-sm font-weight-bold" id="userName">{{username}}</span>
               </div>
             </div>
           </a>

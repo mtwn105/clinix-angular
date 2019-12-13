@@ -21,6 +21,11 @@ import { Doctor } from 'src/app/model/doctor_model';
 })
 export class BookappointmentformComponent implements OnInit {
 
+
+  showPrice1 = false;
+  showPrice2 = false;
+
+
   dateOfAppointment = "";
   selectTimeSlot = 0;
   doctor: Doctor;
