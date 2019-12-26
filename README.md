@@ -2,8 +2,10 @@
 
 ![logo](src/assets/img/brand/clinix-color-logo.png)
 
+### It is live on https://clinix.amitwani.dev
 
-Clinix is a Diagnostic Medicare Management System built on Angular and Spring as backend. The backend of the application is hosted on heroku on https://clinix-medicare.herokuapp.com/ 
+Clinix is a Diagnostic Medicare Management System built on Angular and Spring as backend. 
+The backend of the application is hosted on heroku on https://clinix-medicare.herokuapp.com/ 
 
 ## Roles
 
