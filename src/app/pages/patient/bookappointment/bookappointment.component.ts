@@ -4,6 +4,7 @@ import { DoctorService } from './../../../service/doctor.service';
 import { Component, OnInit } from '@angular/core';
 import { Medicare } from 'src/app/model/medicare_service_model';
 import { MedicareService } from 'src/app/service/medicare.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-bookappointment',
@@ -24,8 +25,8 @@ export class BookappointmentComponent implements OnInit {
 
 
   viewMore(event, id) {
-    alert(this.medicare.find((res) => res.medicareServiceId === id).serviceDescription);
-  }
+    let md: Medicare = this.medicare.find(res => res.medicareServiceId === id);
+    Swal.fire(md.medicareService, md.serviceDescription, "info");  }
 
   viewDoctors(id) {
     this.router.navigateByUrl('/patient/bookappointment/choosedoctors/'+id)

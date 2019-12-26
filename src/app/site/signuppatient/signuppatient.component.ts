@@ -9,6 +9,7 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Admin } from "src/app/model/admin_model";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: "app-signuppatient",
@@ -137,8 +138,11 @@ export class SignuppatientComponent implements OnInit {
     };
     this.signUpService.signUpPatient(patient).subscribe(() => {
       console.log("Signup successful");
-      alert('SignUp successful');
-      this.router.navigateByUrl('/login');
+      Swal.fire(
+        "Good job!",
+        "Sign up successful. You can login once admin approves you.",
+        "success"
+      );      this.router.navigateByUrl('/login');
     }, (err) => console.log("Error!"));
    // console.log("PATIENT :" + patient);
   }

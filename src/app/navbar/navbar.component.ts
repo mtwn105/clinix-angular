@@ -13,14 +13,11 @@ export class NavbarComponent implements OnInit {
   username = ''
   loggedIn = false;
 
-  constructor(private loginService: LoginServiceService, private router: Router) { }
+  constructor(public loginService: LoginServiceService, private router: Router) { }
 
 
 
   ngOnInit() {
-    this.loggedIn = this.loginService.loggedIn;
-    this.gender = this.loginService.loggedInGender;
-    this.username = this.loginService.loggedInUserName;
     console.log(this.gender + " " + this.username)
   }
 

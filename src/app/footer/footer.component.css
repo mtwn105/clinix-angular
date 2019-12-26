@@ -3,5 +3,9 @@
     background-color: #3BD278;
     color: white;
     height: 4rem;
+    vertical-align: middle;
+}
 
+#about_us{
+    color: white
 }

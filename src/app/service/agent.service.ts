@@ -16,6 +16,7 @@ export class AgentsService {
   validCredentials: boolean = false;
   baseUrl = environment.baseUrl;
   private agentsUrl = this.baseUrl + '/agents/';
+  private addAgentUrl = this.baseUrl + '/users/agent';
 
   authCredentials = {
     headers: new HttpHeaders({
@@ -36,7 +37,7 @@ export class AgentsService {
   }
 
   addAgent(agent: Agents) {
-    return this.http.post(this.agentsUrl, agent, this.authCredentials)
+    return this.http.post(this.addAgentUrl, agent, this.authCredentials)
   }
 
   getAgent(id){

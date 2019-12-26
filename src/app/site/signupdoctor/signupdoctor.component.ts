@@ -1,4 +1,4 @@
-import { SignupServiceService } from './../../service/signup-service.service';
+import { SignupServiceService } from "./../../service/signup-service.service";
 import { Component, OnInit } from "@angular/core";
 import {
   FormGroup,
@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 import { Patient } from "src/app/model/patient_model";
 import { Medicare } from "src/app/model/medicare_service_model";
 import { Doctor } from "src/app/model/doctor_model";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-signupdoctor",
@@ -46,8 +47,12 @@ export class SignupdoctorComponent implements OnInit {
   submitted = false;
 
   signUpDoctorForm: FormGroup;
-  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
-  constructor(private formBuilder: FormBuilder, private router: Router, private signUpService: SignupServiceService) {
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$";
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private signUpService: SignupServiceService
+  ) {
     this.medicareServices = [
       {
         medicareServiceId: 1,
@@ -58,25 +63,29 @@ export class SignupdoctorComponent implements OnInit {
       {
         medicareServiceId: 2,
         medicareService: "Cardiologist",
-        serviceDescription: "They’re experts on the heart and blood vessels. You might see them for heart failure, a heart attack, high blood pressure, or an irregular heartbeat.",
+        serviceDescription:
+          "They’re experts on the heart and blood vessels. You might see them for heart failure, a heart attack, high blood pressure, or an irregular heartbeat.",
         amount: 5000
       },
       {
         medicareServiceId: 3,
         medicareService: "Dermatologists",
-        serviceDescription: "Have problems with your skin, hair, nails? Do you have moles, scars, acne, or skin allergies? Dermatologists can help.",
+        serviceDescription:
+          "Have problems with your skin, hair, nails? Do you have moles, scars, acne, or skin allergies? Dermatologists can help.",
         amount: 1000
-      }
-      , {
+      },
+      {
         medicareServiceId: 4,
         medicareService: "Dentist",
-        serviceDescription: "A dentist, also known as a dental surgeon, is a surgeon who specializes in dentistry, the diagnosis, prevention, and treatment of diseases and conditions of the oral cavity.",
+        serviceDescription:
+          "A dentist, also known as a dental surgeon, is a surgeon who specializes in dentistry, the diagnosis, prevention, and treatment of diseases and conditions of the oral cavity.",
         amount: 1000
-      }
-      , {
+      },
+      {
         medicareServiceId: 5,
         medicareService: "Pediatrician",
-        serviceDescription: "A dentist, also known as a dental surgeon, is a surgeon who specializes in dentistry, the diagnosis, prevention, and treatment of diseases and conditions of the oral cavity.",
+        serviceDescription:
+          "A dentist, also known as a dental surgeon, is a surgeon who specializes in dentistry, the diagnosis, prevention, and treatment of diseases and conditions of the oral cavity.",
         amount: 1000
       }
     ];
@@ -117,15 +126,12 @@ export class SignupdoctorComponent implements OnInit {
           Validators.required,
           Validators.minLength(10)
         ]),
-        
+
         altContactNumber: new FormControl(this.altContactNumber, [
           Validators.minLength(10)
         ]),
-        
-        dateOfBirth: new FormControl(
-          '',
-          [Validators.required]
-        ),
+
+        dateOfBirth: new FormControl("", [Validators.required]),
         gender: new FormControl(this.gender, [Validators.required]),
         address1: new FormControl(this.address1, [
           Validators.required,
@@ -159,9 +165,7 @@ export class SignupdoctorComponent implements OnInit {
         ]),
         medicareServiceName: new FormControl(this.medicareServiceName, [
           Validators.required
-        ]),
-
-        
+        ])
       },
       {
         validator: this.mustMatch("password", "confirmPassword")
@@ -210,14 +214,25 @@ export class SignupdoctorComponent implements OnInit {
       approve: false
     };
 
-    console.log("DOCTOR :" + doctor.medicareService.medicareServiceId + " " + doctor.medicareService.medicareService);
+    console.log(
+      "DOCTOR :" +
+        doctor.medicareService.medicareServiceId +
+        " " +
+        doctor.medicareService.medicareService
+    );
 
-    this.signUpService.signUpDoctor(doctor).subscribe(() => {
-      console.log("Signup successful");
-      alert('SignUp successful');
-      this.router.navigateByUrl('/login');
-    }, (err) => console.log("Error!"));
-
+    this.signUpService.signUpDoctor(doctor).subscribe(
+      () => {
+        console.log("Signup successful");
+        Swal.fire(
+          "Good job!",
+          "Sign up successful. You can login once admin approves you.",
+          "success"
+        );
+        this.router.navigateByUrl("/login");
+      },
+      err => console.log("Error!")
+    );
   }
 
   mustMatch(controlName: string, matchingControlName: string) {

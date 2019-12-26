@@ -29,6 +29,12 @@ export class AppComponent {
       if (this.loginservice.loggedInRole === 'ROLE_PATIENT') {
         router.navigateByUrl('/patient/home')
       }
+    }else{
+      this.loginservice.loggedIn = false;
+      this.loginservice.loggedInUserId = 0;
+      this.loginservice.loggedInUserName = '';
+      this.loginservice.loggedInGender = '';
+      this.loginservice.loggedInRole = '';
     }
   }
 
