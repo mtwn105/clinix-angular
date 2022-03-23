@@ -2,6 +2,8 @@
 
 ![logo](src/assets/img/brand/clinix-color-logo.png)
 
+![Clinix](https://user-images.githubusercontent.com/12975481/159705730-c90417ba-b702-45c8-ac31-9e10ee01149d.png)
+
 ### It is live on https://clinix.amitwani.dev
 
 Clinix is a Diagnostic Medicare Management System built on Angular and Spring as backend. 
